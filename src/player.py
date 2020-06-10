@@ -11,3 +11,9 @@ class Player:
 
     def __repr__(self):
         return f"self.name: {self.name} ; self.current_room: {self.current_room}."
+
+    def move(self, direction_to_move):
+        if direction_to_move:
+            self.current_room = direction_to_move
+        else:
+            print(f"\n   Can't go that way...")
