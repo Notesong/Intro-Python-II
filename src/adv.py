@@ -1,5 +1,6 @@
 from player import Player
 from setup import room_setup, player_setup
+from ui_messages import UI_Messages
 
 
 ################################################################
@@ -11,33 +12,24 @@ def main():
 
     room = room_setup()
     player = player_setup(room)
+    ui_messages = UI_Messages(player)
     choice = -1
-    error_message = f"\n   Nope, that didn't work. Please enter a valid command."
-    menu = (
-        "\n   n: go north",
-        "   e: go east",
-        "   s: go south",
-        "   w: go west",
-        "   q: quit the game"
-    )
 
     while True:
         # * Prints the current room name
         # * Prints the current description (the textwrap module might be useful here).
         # * Waits for user input and decides what to do.
-        print(f"\n   You're in the {player.current_room.name}.")
-        print(f"   {player.current_room.description}")
-        choice = input(
-            "\nWhat would you like to do? ")
+        ui_messages.player_status_message()
+        ui_messages.room_status_message()
+        choice = ui_messages.user_input()
         try:
             # If the user enters "q", quit the game.
             if (choice == 'q'):
-                print(f"\nThank you for playing, {player.name}!\n")
+                ui_messages.quit_message()
                 break
             # If the user enters "h", display the help menu
             elif (choice == 'h'):
-                for i in menu:
-                    print(i)
+                ui_messages.menu()
             # If the user enters a cardinal direction, attempt to move to the room there.
             # Print an error message if the movement isn't allowed.
             elif (choice == 'n'):
@@ -49,9 +41,9 @@ def main():
             elif (choice == 'w'):
                 player.move(player.current_room.w_to)
             else:
-                print(error_message)
+                ui_messages.invalid_command_message()
         except ValueError:
-            print(error_message)
+            ui_messages.invalid_command_message()
 
 
 main()
