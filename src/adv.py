@@ -1,12 +1,11 @@
-from room import Room
 from player import Player
 from setup import room_setup, player_setup
+
 
 ################################################################
 # Main
 #
 # The main game loop for the text adventure game.
-
 
 def main():
 
@@ -14,6 +13,13 @@ def main():
     player = player_setup(room)
     choice = -1
     error_message = f"\n   Nope, that didn't work. Please enter a valid command."
+    menu = (
+        "\n   n: go north",
+        "   e: go east",
+        "   s: go south",
+        "   w: go west",
+        "   q: quit the game"
+    )
 
     while True:
         # * Prints the current room name
@@ -28,9 +34,10 @@ def main():
             if (choice == 'q'):
                 print(f"\nThank you for playing, {player.name}!\n")
                 break
+            # If the user enters "h", display the help menu
             elif (choice == 'h'):
-                print(
-                    f"\n n: go north\n e: go east\n s: go south\n w: go west\n q: quit the game")
+                for i in menu:
+                    print(i)
             # If the user enters a cardinal direction, attempt to move to the room there.
             # Print an error message if the movement isn't allowed.
             elif (choice == 'n'):

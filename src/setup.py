@@ -1,15 +1,15 @@
 from room import Room
 from player import Player
 
+
 ################################################################
 # room_setup
 #
 # Makes all the rooms that are available in the game
 
-
 def room_setup():
-    # Declare all the rooms
 
+    # Declare all the rooms
     room = {
         'outside':  Room("Outside Cave Entrance",
                          """North of you, the cave mount beckons.""",
@@ -39,7 +39,6 @@ def room_setup():
     }
 
     # Link rooms together
-
     room['outside'].n_to = room['foyer']
     room['foyer'].s_to = room['outside']
     room['foyer'].n_to = room['overlook']
