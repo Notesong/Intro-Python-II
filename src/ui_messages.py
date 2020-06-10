@@ -14,6 +14,12 @@ class UI_Messages:
     def quit_message(self):
         print(f"\nThank you for playing, {self.player.name}!\n")
 
+    def invalid_direction_message(self):
+        print(f"\n   Can't go that way...")
+
+    def invalid_command_message(self):
+        print(f"\n   Nope, that didn't work. Please enter a valid command.")
+
     def menu(self):
         menu = (
             "\n   n: go north",
@@ -24,6 +30,3 @@ class UI_Messages:
         )
         for i in menu:
             print(i)
-
-    def invalid_command_message(self):
-        print(f"\n   Nope, that didn't work. Please enter a valid command.")

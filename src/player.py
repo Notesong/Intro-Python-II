@@ -12,10 +12,10 @@ class Player:
     def __repr__(self):
         return f"self.name: {self.name} ; self.current_room: {self.current_room}."
 
-    def move(self, link_to_room):
+    def move(self, link_to_room, ui_messages):
         # if a link exists to the room, set the current_room to that room
         if link_to_room:
             self.current_room = link_to_room
         # if the link doesn't exist, display an error message
         else:
-            print(f"\n   Can't go that way...")
+            ui_messages.invalid_direction_message()
