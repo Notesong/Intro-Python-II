@@ -1,3 +1,8 @@
+# Please note, player creation messages are contained in setup.py.
+# This is because the player object is set up before UI_Messages.
+# The player object needs to be created before UI_Messages so that
+# UI_Messages can display player data.
+
 class UI_Messages:
     def __init__(self, player):
         self.player = player
