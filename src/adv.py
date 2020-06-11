@@ -32,46 +32,46 @@ def main():
         choice[0] = choice[0].lower()
         try:
             # If the user enters "q", quit the game
-            if (choice[0] == 'q'):
+            if (choice[0] == 'q' or choice[0] == 'quit'):
                 ui_messages.quit_message()
                 break
             # If the user enters "h", display the help menu
-            elif (choice[0] == 'h'):
+            elif (choice[0] == 'h' or choice[0] == 'help'):
                 ui_messages.menu()
             # If the user enters a cardinal direction, attempt to move to the room there
             # Print an error message if the movement isn't allowed
-            elif (choice[0] == 'n'):
+            elif (choice[0] == 'n' or choice[0] == 'north'):
                 player.move(player.current_room.n_to)
-            elif (choice[0] == 'e'):
+            elif (choice[0] == 'e' or choice[0] == 'east'):
                 player.move(player.current_room.e_to)
-            elif (choice[0] == 's'):
+            elif (choice[0] == 's' or choice[0] == 'south'):
                 player.move(player.current_room.s_to)
-            elif (choice[0] == 'w'):
+            elif (choice[0] == 'w' or choice[0] == 'west'):
                 player.move(player.current_room.w_to)
             # Take an object
-            elif (choice[0] == 't'):
+            elif (choice[0] == 't' or choice[0] == 'take'):
                 if len(choice) == 1:
                     ui_messages.take_item_error_message()
                 elif len(choice) == 2:
                     player.take(choice[1], item, room)
             # Look at an object
-            elif (choice[0] == 'l'):
+            elif (choice[0] == 'l' or choice[0] == 'look'):
                 if len(choice) == 1:
                     print('')
                     ui_messages.room_status_message(room)
                 elif len(choice) == 2:
                     player.look_at_item(choice[1], item)
             # Drop an object
-            elif (choice[0] == 'd'):
+            elif (choice[0] == 'd' or choice[0] == 'drop'):
                 if len(choice) == 1:
                     ui_messages.drop_item_error_message()
                 elif len(choice) == 2:
                     player.drop(choice[1], item, room)
             # Check inventory
-            elif (choice[0] == 'i'):
+            elif (choice[0] == 'i' or choice[0] == 'inventory'):
                 player.check_inventory()
             # Use an object on an object
-            elif (choice[0] == 'u'):
+            elif (choice[0] == 'u' or choice[0] == 'use'):
                 pass
             else:
                 ui_messages.invalid_command_message()

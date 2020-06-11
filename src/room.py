@@ -19,9 +19,8 @@ class Room:
 
     # Add item to the room's inventory
     def add_item(self, item):
-        print(self.inventory)
-        self.inventory.append(item)
+        self.inventory.append(item.lower())
 
     # Remove item from the room's inventory
     def remove_item(self, item):
-        self.inventory.remove(item)
+        self.inventory.remove(item.lower())
