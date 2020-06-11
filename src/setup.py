@@ -1,5 +1,27 @@
 from room import Room
 from player import Player
+from item import Item
+
+
+################################################################
+# item_setup
+#
+# Generates all items
+
+def item_setup():
+    item = {
+        'key': Item("Key", "A old key burnished over time."),
+
+        'flashlight': Item("Flashlight", "A heavy duty flashlight."),
+
+        'chest': Item("Chest", "Despite its age, it's still firmly intact."),
+
+        'necklace': Item("Necklace", "You recognize it from an old painting in your grandmother's house."),
+
+        'stone': Item("Stone", "Just an ordinary piece of rock."),
+    }
+
+    return item
 
 
 ################################################################
@@ -7,35 +29,35 @@ from player import Player
 #
 # Makes all the rooms that are available in the game
 
-def room_setup():
+def room_setup(item):
 
     # Declare all the rooms
     room = {
         'outside':  Room("Outside Cave Entrance",
                          """North of you, the cave mount beckons.""",
-                         n_to=[], e_to=[], s_to=[], w_to=[]),
+                         []),
 
         'foyer':    Room("Foyer",
                          """Dim light filters in from the south. Dusty passages run 
    north and east.""",
-                         n_to=[], e_to=[], s_to=[], w_to=[]),
+                         []),
 
         'overlook': Room("Grand Overlook",
                          """A steep cliff appears before you, falling into the darkness. 
    Ahead to the north, a light flickers in the distance, but 
    there is no way across the chasm.""",
-                         n_to=[], e_to=[], s_to=[], w_to=[]),
+                         []),
 
         'narrow':   Room("Narrow Passage",
                          """The narrow passage bends here from west to north. The smell
    of gold permeates the air.""",
-                         n_to=[], e_to=[], s_to=[], w_to=[]),
+                         []),
 
         'treasure': Room("Treasure Chamber",
                          """You've found the long-lost treasure chamber! Sadly, it has 
    already been completely emptied by earlier adventurers. The 
    only exit is to the south.""",
-                         n_to=[], e_to=[], s_to=[], w_to=[]),
+                         []),
     }
 
     # Link rooms together
@@ -56,7 +78,8 @@ def room_setup():
 #
 # Makes a new player object that is currently in the 'outside' room.
 
-def player_setup(room):
+
+def player_setup(room, item):
 
     player_name = []
 
@@ -69,7 +92,16 @@ def player_setup(room):
         else:
             break
 
-    player = Player(name=player_name, current_room=room['outside'])
+    current_inventory = [
+        item['flashlight'].name.lower(),
+        item['key'].name.lower()
+    ]
+
+    player = Player(
+        name=player_name,
+        current_room=room['outside'],
+        inventory=current_inventory,
+    )
 
     print(
         f"\nGood to meet you, {player.name}! I have a feeling I'll remember\nthat name for years to come.")
