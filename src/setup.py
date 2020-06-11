@@ -10,9 +10,9 @@ from item import Item
 
 def item_setup():
     item = {
-        'key': Item("Key", "A old key burnished over time."),
+        'key': Item("Key", "An old key burnished over time."),
 
-        'flashlight': Item("Flashlight", "A heavy duty flashlight."),
+        'flashlight': Item("Flashlight", "A heavy duty flashlight from the hardware store."),
 
         'chest': Item("Chest", "Despite its age, it's still firmly intact."),
 
